@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { volumes } from "@/lib/data";
 import { introduction } from "@/lib/data";
-import { useRouter } from "next/router";
+import { RandomButton } from "@/components/Navigation";
 
-export default function Volumes() {
-  const router = useRouter();
-
+export default function AllVolumes() {
   return (
     <>
+      <Link href="/">← Home</Link>
       <h1>The Lord of the Rings</h1>
       <p>{introduction}</p>
       <ul>
@@ -19,18 +18,7 @@ export default function Volumes() {
           );
         })}
       </ul>
-      <button
-        type="button"
-        onClick={() => {
-          router.push(
-            `/volumes/${
-              volumes[Math.floor(Math.random() * volumes.length)].slug
-            }`
-          );
-        }}
-      >
-        View Random Book
-      </button>
+      <RandomButton></RandomButton>
     </>
   );
 }
